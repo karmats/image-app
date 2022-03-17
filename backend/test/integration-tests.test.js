@@ -6,8 +6,11 @@ const dropAllCollections = require("./utils/dropAllCollections");
 
 const request = supertest(app);
 
-const testImageName = "Test";
-const expectedFilePath = "/img/Test.jpeg";
+const fakeDate = 1647507125593;
+const dateNowFn = Date.now.bind(global.Date);
+
+const testImageName = "#Testar åäö och längd på filnamn";
+const expectedFilePath = `/img/testar-aao_${fakeDate}.jpeg`;
 
 // Connects to test database
 beforeAll(async () => {
@@ -17,12 +20,16 @@ beforeAll(async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
+
+  global.Date.now = jest.fn(() => fakeDate);
 });
 
 // Clean up test database and drop connection
 afterAll(async () => {
   await dropAllCollections();
   await mongoose.connection.close();
+
+  global.Date.now = dateNowFn;
 });
 
 test("Return 404 for invalid endpoint", async (done) => {
@@ -48,8 +55,8 @@ test("POST /images - upload image", async (done) => {
   }
 
   expect(response.status).toBe(201);
-  expect(response.body.data.data.name).toBe(testImageName);
-  expect(response.body.data.data.path).toBe(expectedFilePath);
+  expect(response.body.data.name).toBe(testImageName);
+  expect(response.body.data.path).toBe(expectedFilePath);
   expect(fileExists).toBe(true);
 
   done();
