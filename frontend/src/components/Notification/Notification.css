@@ -1,0 +1,41 @@
+.Notification {
+  position: absolute;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+  animation: fromTop var(--animation-duration);
+}
+
+.Notification-error {
+  color: #ffffff;
+  background-color: #b00020;
+}
+
+.Notification-info {
+  color: #ffffff;
+  background-color: #2196f3;
+}
+
+.Notification-close {
+  font-size: 2rem;
+  line-height: 0.5;
+  float: right;
+}
+
+.Notification-close:hover,
+.Notification-close:focus {
+  filter: brightness(80%);
+  cursor: pointer;
+}
+
+@keyframes fromTop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -2rem, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
