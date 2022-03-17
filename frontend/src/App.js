@@ -9,6 +9,11 @@ function App() {
       <header className="App-header">
         <h1>Image Uploading App</h1>
       </header>
+      <main className="App-content">
+        <div className="App-description">
+          Welcome to the Image Upload App!
+        </div>
+      </main>
     </div>
   );
 }
