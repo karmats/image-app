@@ -1,0 +1,28 @@
+.FileUploadButton {
+  background-color: var(--color-primary);
+  color: var(--color-main);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: filter var(--transition-duration);
+}
+
+.FileUploadButton:hover {
+  filter: brightness(80%);
+}
+.FileUploadButton:active {
+  filter: brightness(90%);
+}
+
+.FileUploadButton-icon {
+  fill: var(--color-main);
+  width: 1.25rem;
+  height: 0.875rem;
+}

@@ -1,0 +1,32 @@
+.DragAndDrop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed;
+  padding: 2rem;
+  width: 40vw;
+  font-size: 1.5rem;
+  transition: all var(--transition-duration);
+}
+.DragAndDrop.show {
+  border-style: solid;
+}
+.DragAndDrop-img {
+  fill: var(--color-main);
+  margin-bottom: 1rem;
+  width: 20%;
+  opacity: 0.5;
+  transition: opacity var(--transition-duration);
+  pointer-events: none;
+}
+.DragAndDrop.show .DragAndDrop-img {
+  opacity: 1;
+}
+@media only screen and (max-width: 768px) {
+  .DragAndDrop {
+    width: 80vw;
+  }
+  .DragAndDrop-img {
+    width: 60%;
+  }
+}
